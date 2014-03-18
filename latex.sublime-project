@@ -1,0 +1,23 @@
+{
+	"folders":
+	[
+		{
+			"path": "/D/projects/eureqa",
+			"file_exclude_patterns": [
+			 "*.aux",
+			 "*.bak",
+			 "*.bbl",
+			 "*.blg",
+			 "*.log",
+			 "*.nav",
+			 "*.pdf",
+			 "*.gz",
+			 "*.out",
+			 "*.toc",
+			 "*.snm",
+			 "*synctex.gz",
+			 "*.vrb"
+			 ]
+		}
+	]
+}

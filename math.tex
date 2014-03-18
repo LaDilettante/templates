@@ -1,0 +1,155 @@
+%2multibyte Version: 5.50.0.2953 CodePage: 1252
+%  
+%  Created by Dan Lee on 2013-09-28.
+%  Copyright (c) 2011 Duke University. All rights reserved.
+% ------------------------------------------------------------------------
+\documentclass[10pt]{article}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{geometry}
+\usepackage[pagewise,mathlines]{lineno}
+\usepackage[authoryear]{natbib}
+\usepackage{latexsym}
+\usepackage{enumerate}
+\usepackage{setspace}
+\usepackage[toc,title,titletoc,header]{appendix}
+\usepackage[bottom]{footmisc}
+\usepackage[pdfborder={0 0 0}]{hyperref}
+\usepackage{graphicx}
+
+\setcounter{MaxMatrixCols}{10}
+\synctex=1
+\geometry{letterpaper,left=1.0in,right=1.0in,top=1.0in,bottom=1.0in}
+\bibliographystyle{ecta}
+\renewcommand{\theequation}{\thesection.\arabic{equation}}
+\newcommand{\myref}[2]{\hyperref[#1]{#2}}
+\numberwithin{equation}{section}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}{Lemma}[section]
+\newtheorem{corollary}{Corollary}[section]
+\newtheorem{assumption}{Assumption}[section]
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}[section]
+\newtheorem{example}{Example}[section]
+\newtheorem{remark}{Remark}[section]
+\theoremstyle{remark}
+\newtheorem{comment}{Comment}[section]
+\newtheorem{conjecture}{Conjecture}[section]
+%\newtheorem*{assumptionB}{\textbf{\textup{Assumption 1}}}
+\newcounter{assumptionB}
+\setcounter{assumptionB}{1}
+\newenvironment{assumptionB}[1][]{\medskip\noindent{\textbf{Assumption B.\arabic{assumptionB}.#1}\stepcounter{assumptionB}}}
+
+\newcommand\indep{\protect\mathpalette{\protect\independenT}{\perp}}
+\def\independenT#1#2{\mathrel{\rlap{$#1#2$}\mkern2mu{#1#2}}}
+
+\newcommand\undermat[2]{%
+  \makebox[0pt][l]{$\smash{\underbrace{\phantom{%
+    \begin{matrix}#2\end{matrix}}}_{\text{$#1$}}}$}#2}
+
+%\newcounter{assumptionM} \setcounter{assumptionM}{1}
+%\newenvironment{assumptionM}[1][]{\medskip\noindent{\textbf{Assumption M.\arabic{assumptionM}.#1}\stepcounter{assumptionM}}}
+\setpagewiselinenumbers
+\linenumbers
+%\input{tcilatex}
+
+\begin{document}
+%-------- Beginning Title Page -----------------------------
+\title{Do Higher-Order DSGE Approximations improve Identification?}
+\author{Dan Lee\\Department of Economics\\Duke University\\ \textit{dan.lee@duke.edu}}
+\date{\today\\}
+\maketitle
+
+\section{Local Identification through first two moments}
+
+\begin{definition}{Notation of Komunjer and Ng:}\\
+$Z_{t+1}$: minimal vector of covariance-stationary state variables\\
+ $W_{t+1}$: observable variables\\
+$\xi_{t+1}$: innovations/measurements errors\\
+$\theta$: deep parameters (to be identified/estimated)\end{definition}
+Variables obey linear law of motion:
+\begin{eqnarray}Z_{t+1} = A(\theta ) Z_t + B(\theta )\xi_{t+1}\\
+W_{t+1} = C(\theta ) Z_t + D(\theta )\xi_{t+1}\end{eqnarray}
+Assumptions:\\
+(1) $\forall \theta \in \Theta , E[\xi_t] =0, E[\xi_t\xi_s'] = \delta_{t-s}\Sigma_\xi (\theta)$\\
+(2) eigenvalues of $A(\theta ) \in (-1,1)$\\
+
+\subsection{DSGE General Solution:}
+\begin{eqnarray}\begin{array}{l l} \text{non-predetermined variables } & y_t = g(x_t,\sigma ) \in R^{n_y}\\
+\text{pre-determined variables } & x_{t+1} = h(x_t ,\sigma ) + \sigma \eta \epsilon_{t+1} \in R^{n_x}\\
+\text{exogenous innovations } & \epsilon_{t+1} \sim IID(0,I_{n_\epsilon}), \epsilon_t \indep x^t\\
+\text{perturbation parameter} & \sigma \\
+\text{square root of unconditional covariance matrix of innovations} & \eta \\
+ \end{array}\end{eqnarray}\\
+
+
+
+\subsection{First-Order Approximation to DSGE Solution}
+\begin{eqnarray}\displaystyle  x_{t+1}^{(1)} = h_x x_{t}^{(1)} + \sigma \eta \epsilon_{t+1}\\
+y_t^{f} = g_x x_t^{(1)} = g_x (h_x x_{t-1}^{(1)} + \sigma \eta \epsilon_{t+1})\end{eqnarray}
+\begin{eqnarray*}
+\begin{array}{ll}
+Z_t^{(1)} = x_t^{(1)} \in R^{n_x} & W_t^{(1)} = y_t^{f} \in R^{n_y}\\
+\xi_t^{(1)} = \eta \epsilon_t \in R^{n_\epsilon} &  \Sigma_{\epsilon}^{(1)} = \eta \eta '\\
+\\
+\undermat{n_x \times n_x} A^{(1)}(\theta ) = h_x & B^{(1)}(\theta ) = \sigma I_{n_x}\\
+\\
+\\
+\undermat{n_y \times n_x}C^{(1)}(\theta ) = g_xh_x & \undermat{n_y \times n_x}D^{(1)}(\theta ) = \sigma g_x \\
+
+ \end{array}
+\end{eqnarray*}
+
+
+\subsection{Second-Order Approximation to DSGE Solution}
+\begin{eqnarray}\displaystyle \begin{array}{l}
+	 z_t^{(2)} = \left[ (x_t^f)' (x^s_t)' (x_t^f \otimes x_t^f)' \right] ' \in R^{2n_x + n_x^2}\\
+	\vspace{5mm}
+z_{t+1}^{(2)} = \overline{A}^{(2)}z_t^{(2)} + \overline{B}^{(2)} + \xi_{t+1}^{(2)} + \overline{c}^{(2)}\\
+\vspace{5mm}
+ \xi^{(2)}_{t+1} = \left[ \begin{array}{c}
+\epsilon_{t+1}\\ \epsilon_{t+1} \otimes \epsilon_{t+1} - vec(I_{n_\epsilon}) \\ \epsilon_{t+1} \otimes x^f_{t+1} \\ x^f_{t+1} \otimes \epsilon_{t+1} \end{array}\right]\\\vspace{5mm}
+y_{t+1}^s = \overline{C}^{(2)}z_{t+1}^{(2)} + \overline{d}^{(2)} = \overline{C}^{(2)}(\overline{A}^{(2)}z_t^{(2)} + \overline{B}^{(2)} \xi_{t+1}^{(2)} + \overline{c}^{(2)}) + \overline{d}^{(2)}
+\end{array}\end{eqnarray}
+
+
+\begin{eqnarray*}\displaystyle
+	\begin{array}{ll}
+		Z_{t}^{(2)} = z_t^{(2)}-\overline{B}^{(2)}-\overline{c}^{(2)} & W_t^{(2)} = y^s_t - \overline{C}^{(2)}(\overline{B}^{(2)}+\overline{c}^{(2)} + \overline{A}^{(2)}(\overline{B}^{(2)}+\overline{c}^{(2)}))	- \overline{d}^{(2)}\\
+		\\
+\overline{A}^{(2)} = \left[ \begin{array}{ccc}
+h_x & 0 & 0 \\
+0 & h_x & \frac{1}{2}H_{xx} \\
+0 & 0 & h_x \otimes h_x \end{array} \right] & \overline{B}^{(2)} = \left[ \begin{array}{cccc}
+\sigma \eta & 0 & 0 & 0 \\
+0 & 0 & 0 & 0 \\
+0 & \sigma \eta \otimes \sigma \eta & \sigma \eta \otimes \sigma \eta & \sigma \eta \otimes \sigma \eta \end{array} \right]\\
+\\
+\overline{C}^{(2)} = [g_x \text{ }g_x \text{ }\frac{1}{2}G_{xx}] & \overline{d}^{(2)} = \frac{1}{2}g_{\sigma \sigma}\sigma^2\\
+\\
+
+& \overline{c}^{(2)} = \left[ \begin{array}{c} 0\\ \frac{1}{2}h_{\sigma \sigma}\sigma^2 \\ (\sigma \eta \otimes \sigma \eta )vec(I_{n_\epsilon}) \end{array} \right]\\
+A^{(2)}(\theta ) = \overline{A}^{(2)} & B^{(2)}(\theta ) = I_{n_\epsilon + n_\epsilon^2 + 2n_\epsilon n_x}\\
+C^{(2)}(\theta ) = \overline{C}^{(2)}\overline{A}^{(2)} & D^{(2)}(\theta )= \overline{A}^{(2)}
+\end{array}
+\end{eqnarray*}
+
+Now here's what I thought was the main issue: in our linear representation, $z_t^{(2)}$ is NOT MINIMAL $\rightarrow$ Komunjer and Ng results cannot be applied.\\  
+
+Stephen D. Morris says: despite being not minimal in casual sense (since $x_t$ contains all information about $x_t \bigotimes x_t$), this is still the minimal linear representation and (if I understand correctly), so we DO satisfy Assumption 5-S in Komunjer/Ng paper.\\
+
+All that is left is to verify their remaining assumptions (singular case presented):\\
+
+(3-S) The mapping from structural parameters to ABCD representation $\Lambda^S : \theta \mapsto \Lambda^S(\theta ) = (vec(A(\theta ))', vec(B(\theta ))', vec(C(\theta ))',vec(D(\theta ))')$\\
+
+(4-S) For every $\theta \in \Theta $, rank $\mathcal{P}(z;\theta ) = n_x + n_\epsilon$ in $|z|>1$.  Assumption of LEFT INVERTIBILITY.\\
+
+(5-S) ``(rank conditions on matrices derived from $A(\theta )^iB(\theta )$ and $A(\theta )^{i'}C(\theta )'$).''  assumption imposes CONTROLLABILITY of $(A(\theta ),B(\theta ))$ and observability of $(A(\theta ), C(\theta ))$ and therefore MINIMAL SYSTEM. 
+
+
+\pagebreak \appendix
+\sloppy
+%{\small \input{Sections/appendix.tex}}
+\end{document}

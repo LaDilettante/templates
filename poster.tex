@@ -1,0 +1,110 @@
+\documentclass[a0,portrait]{a0poster}
+
+\usepackage{multicol} % This is so we can have multiple columns of text side-by-side
+\columnsep=100pt % This is the amount of white space between the columns in the poster
+\columnseprule=3pt % This is the thickness of the black line between the columns in the poster
+
+\usepackage[svgnames]{xcolor} % Specify colors by their 'svgnames', for a full list of all colors available see here: http://www.latextemplates.com/svgnames-colors
+
+\usepackage{times} % Use the times font
+%\usepackage{palatino} % Uncomment to use the Palatino font
+
+\usepackage{graphicx} % Required for including images
+\graphicspath{{fig/}} % Location of the graphics files
+\usepackage{booktabs} % Top and bottom rules for table
+\usepackage[font=small,labelfont=bf]{caption} % Required for specifying captions to tables and figures
+\usepackage{amsfonts, amsmath, amsthm, amssymb} % For math fonts, symbols and environments
+\usepackage{wrapfig} % Allows wrapping text around tables and figures
+
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks,
+    linkcolor={red!50!black},
+    citecolor={blue!50!black},
+    urlcolor={blue!80!black}
+}
+\usepackage{cleveref}
+
+\begin{document}
+
+%----------------------------------------------------------------------------------------
+%	POSTER HEADER 
+%----------------------------------------------------------------------------------------
+
+% The header is divided into two boxes:
+% The first is 75% wide and houses the title, subtitle, names, university/organization and contact information
+% The second is 25% wide and houses a logo for your university/organization or a photo of you
+% The widths of these boxes can be easily edited to accommodate your content as you see fit
+
+\begin{minipage}[b]{0.75\linewidth}
+\veryHuge \color{NavyBlue} \textbf{Conflict Prediction with Spike and Slab prior} \color{Black}\\ % Title
+\Huge\textit{}\\[2cm] % Subtitle
+\huge \textbf{Anh Le}\\[0.5cm] % Author(s)
+\huge Political Science Department\\[0.4cm] % University/organization
+\Large \texttt{anh.le@duke.edu}\\
+\end{minipage}
+%
+\begin{minipage}[b]{0.25\linewidth}
+\includegraphics[width=20cm]{Duke-logo.jpg}\\
+\end{minipage}
+
+\vspace{1cm} % A bit of extra whitespace between the header and poster content
+
+%----------------------------------------------------------------------------------------
+
+\begin{multicols}{2} % This is how many columns your poster will be broken into, a portrait poster is generally split into 2 columns
+
+%----------------------------------------------------------------------------------------
+%	ABSTRACT
+%----------------------------------------------------------------------------------------
+
+\color{Navy} % Navy color for the abstract
+
+%----------------------------------------------------------------------------------------
+%	INTRODUCTION
+%----------------------------------------------------------------------------------------
+
+\color{SaddleBrown} % SaddleBrown color for the introduction
+
+\section*{Introduction}
+
+Being able to predict conflict is very useful for governments and international organizations to deploy their limited resources effectively.
+
+\color{DarkSlateGray} % DarkSlateGray color for the rest of the content
+
+%------------------------------------------------
+
+\section*{Analysis}
+
+I pre-process the data by removing extraneous variables (country names, time ID, etc.) and, for each country in the dataset, add a binary variable that indicates whether an observation belongs to a country.
+
+\section*{Results}
+
+%----------------------------------------------------------------------------------------
+%	CONCLUSIONS
+%----------------------------------------------------------------------------------------
+
+\color{SaddleBrown} % SaddleBrown color for the conclusions to make them stand out
+
+\section*{Conclusions}
+
+\color{DarkSlateGray} % Set the color back to DarkSlateGray for the rest of the content
+
+%----------------------------------------------------------------------------------------
+%	FORTHCOMING RESEARCH
+%----------------------------------------------------------------------------------------
+
+\section*{Forthcoming Research}
+
+\end{multicols}
+\end{document}
+
+
+
+
+
+
+
+
+
+

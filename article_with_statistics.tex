@@ -1,7 +1,12 @@
 \documentclass[12pt]{article}
 
 \usepackage[margin=1in]{geometry}  % set the margins to 1in on all sides
+
 \usepackage{graphicx}              % to include figures
+\usepackage{caption}               % allow newline in caption
+
+\usepackage{enumitem}              % for [noitemsep], i.e. less space between items
+
 \usepackage{amsmath}               % great math stuff
 \usepackage{amsfonts}              % for blackboard bold, etc
 \usepackage{amsthm}                % better theorem environments
@@ -14,7 +19,7 @@
     citecolor={blue!50!black},
     urlcolor={blue!80!black}
 }
-\usepackage{cleveref}
+\usepackage{cleveref}             % automate reference name (table, section, figure, etc.)
 
 \usepackage{rotating} % sideway table
 \usepackage{array}    % table for math
